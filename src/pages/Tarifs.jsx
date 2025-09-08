@@ -56,8 +56,8 @@ const Tarifs = () => {
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold text-gray-900">Grille Tarifaire</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Nos tarifs sont transparents et adaptés à la nature des prestations. 
-            Nous nous engageons à vous offrir un service de qualité à un prix juste.
+            Mes tarifs sont transparents et adaptés à la nature des prestations. 
+            Je m'engage à vous offrir un service de qualité à un prix juste.
           </p>
         </div>
       </section>
@@ -151,7 +151,7 @@ const Tarifs = () => {
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-3xl font-bold text-gray-900">Modes de Paiement</h2>
             <p className="text-xl text-gray-600">
-              Nous acceptons plusieurs modes de paiement pour votre convenance
+              J'accepte plusieurs modes de paiement pour votre convenance
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -169,7 +169,7 @@ const Tarifs = () => {
           </div>
           <div className="mt-8 text-center">
             <p className="text-gray-600">
-              Nous pouvons vous accompagner dans les démarches pour bénéficier des aides financières disponibles.
+              Je peux vous accompagner dans les démarches pour bénéficier des aides financières disponibles.
             </p>
           </div>
         </div>

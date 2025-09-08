@@ -1,0 +1,536 @@
+voici les code actuels :
+
+    le fichier custom.js contient ceci :
+                /**
+        * ======================================
+        * 07. mobile menu
+        * ======================================
+        */
+        // 1️⃣ Cloner le menu desktop dans le menu mobile (une seule fois)
+        if ($(".mobile-menu").length > 0 && $(".mobile-menu__list").is(':empty')) {
+            var $desktopMenu = $(".navbar__menu").clone();
+            $desktopMenu.removeClass("d-none d-xl-block");
+            $desktopMenu.find(".d-none, .d-xl-block, .d-xl-none, .d-xxl-block, .d-xxl-none").removeClass("d-none d-xl-block d-xl-none d-xxl-block d-xxl-none");
+            $(".mobile-menu__list").append($desktopMenu.html());
+        }
+
+        // 2️⃣ Toggle mobile menu
+        $(".open-offcanvas-nav").on("click", function(){
+            $(this).addClass("open-offcanvas-nav-active");
+            $(".mobile-menu__backdrop").addClass("mobile-menu__backdrop-active");
+            $(".mobile-menu").addClass("show-menu");
+            $(".mobile-menu__wrapper").removeClass("nav-fade-active");
+        });
+
+        // 3️⃣ Fermer le menu mobile
+        $(".close-mobile-menu, .mobile-menu__backdrop").on("click", function(){
+            $(".open-offcanvas-nav").removeClass("open-offcanvas-nav-active");
+            $(".mobile-menu").removeClass("show-menu");
+            $(".mobile-menu__backdrop").removeClass("mobile-menu__backdrop-active");
+            $(".mobile-menu__wrapper").addClass("nav-fade-active");
+            $(".mobile-menu .navbar__item-active").removeClass("navbar__item-active");
+            $(".mobile-menu .navbar__sub-menu").slideUp(0);
+            $(".dropdown-toggle-arrow").removeClass("open");
+        });
+
+        // 4️⃣ Toggle sous-menu via le span (ADAPTÉ À TA STRUCTURE)
+        $(document).on("click", ".mobile-menu .dropdown-toggle-arrow", function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            var $arrow = $(this);
+            var $submenu = $arrow.next(".navbar__sub-menu");
+
+            // Fermer tous les autres sous-menus
+            $(".mobile-menu .navbar__sub-menu").not($submenu).slideUp(500);
+            $(".dropdown-toggle-arrow").not($arrow).removeClass("open");
+
+            // Ouvrir/fermer le sous-menu courant
+            $submenu.slideToggle(500);
+            $arrow.toggleClass("open");
+            $arrow.closest("li").toggleClass("navbar__item-active");
+        });
+
+        // 5️⃣ Empêcher clic sur parent link sur mobile
+        $(document).on("click", ".mobile-menu .navbar__item--has-children > a", function(e){
+            if ($(window).width() < 1200) e.preventDefault();
+        });
+
+        // 6️⃣ Réinitialiser menu mobile au resize
+        $(window).on("resize", function(){
+            $(".mobile-menu").removeClass("show-menu");
+            $(".mobile-menu__backdrop").removeClass("mobile-menu__backdrop-active");
+            $(".mobile-menu__wrapper").addClass("nav-fade-active");
+            $(".mobile-menu .navbar__item-active").removeClass("navbar__item-active");
+            $(".mobile-menu .navbar__sub-menu").slideUp(0);
+            $(".dropdown-toggle-arrow").removeClass("open");
+            $(".open-offcanvas-nav").removeClass("open-offcanvas-nav-active");
+        });
+
+
+    le fichier php du header en generale contient ceci :
+        <?php
+        /**
+        * Header Style 01
+        * @package charifund
+        * @since 1.0.0
+        */
+        ?>
+
+        <?php
+        $header_1_top_bar_enabled = cs_get_option('header_1_top_bar_enabled'); 
+        $header_1_top_bar_contacts_repeater = cs_get_option('header_1_top_bar_contacts_repeater');
+        $header_1_topbar_text = cs_get_option('header_1_topbar_text');
+        $header_1_top_bar_socials_repeater = cs_get_option('header_1_top_bar_socials_repeater');
+
+        $header_1_logo = cs_get_option('header_1_logo'); 
+        $header_1_callus_enabled = cs_get_option('header_1_callus_enabled'); 
+        $header_1_callus_title = cs_get_option('header_1_callus_title'); 
+        $header_1_callus_text = cs_get_option('header_1_callus_text'); 
+        $header_1_callus_url = cs_get_option('header_1_callus_url'); 
+        $header_1_search_enabled = cs_get_option('header_1_search_enabled'); 
+        $header_1_right_btn_text = cs_get_option('header_1_right_btn_text');
+        $header_1_right_btn_url = cs_get_option('header_1_right_btn_url'); 
+        $header_1_right_btn_enabled = cs_get_option('header_1_right_btn_enabled'); 
+
+        ?> 
+
+        <!-- ==== topbar start ==== -->
+        <?php 
+        if( $header_1_top_bar_enabled ): ?>
+        <div class="topbar topbar--secondary d-none d-lg-block"> 
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="topbar__inner">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-lg-6 col-xxl-4">
+                                <div class="topbar__list-wrapper">
+                                <?php
+                                if ( ! empty( $header_1_top_bar_contacts_repeater ) && is_array( $header_1_top_bar_contacts_repeater ) ) {
+                                    echo '<ul class="topbar__list">';
+                                    
+                                    foreach ( $header_1_top_bar_contacts_repeater as $item ) {
+                                        // Check if the icon and contact info are set
+                                        if ( ! empty( $item['header_1_top_bar_icon'] ) && ! empty( $item['header_1_top_bar_info'] ) ) {
+                                            // Define the contact info and URL based on the type
+                                            $info = esc_html( $item['header_1_top_bar_info'] );
+                                            $url  = ! empty( $item['header_1_top_bar_info_url'] ) 
+                                                    ? esc_url( $item['header_1_top_bar_info_url'] ) 
+                                                    : ( filter_var( $info, FILTER_VALIDATE_EMAIL ) 
+                                                        ? 'mailto:' . $info 
+                                                        : ( filter_var( $info, FILTER_SANITIZE_NUMBER_INT ) 
+                                                            ? 'tel:' . $info 
+                                                            : '#' ) );
+
+                                            echo '<li>';
+                                            // Render icon if available
+                                            if ( ! empty( $item['header_1_top_bar_icon'] ) ) {
+                                                echo '<a href="' . $url . '"><i class="' . esc_attr( $item['header_1_top_bar_icon'] ) . '"></i> ' . $info . ' </a>';
+                                            }                                            
+                                            echo '</li>';
+                                        }
+                                    }
+
+                                    echo '</ul>';
+                                }
+                                ?>
+
+                                </div>
+                            </div>
+                            <div class="col-12 col-xxl-4 d-none d-xxl-block">
+                                <div class="topbar__extra text-center">
+                                    <p>
+                                    <?php
+                                        if (!empty($header_1_topbar_text)) {
+                                            echo wp_kses_post($header_1_topbar_text);
+                                        }                                
+                                    ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 col-xxl-4">
+                                <div class="topbar__items justify-content-end">
+                                    <?php
+                                    if ( ! empty( $header_1_top_bar_socials_repeater ) && is_array( $header_1_top_bar_socials_repeater ) ) {
+                                        echo '<div class="social">';
+                                        foreach ( $header_1_top_bar_socials_repeater as $item ) {
+                                            if ( ! empty( $item['header_1_top_bar_socials_icon'] ) && ! empty( $item['header_1_top_bar_socials_url'] ) ) {
+                                                $icon = esc_attr( $item['header_1_top_bar_socials_icon'] );
+                                                $url = esc_url( $item['header_1_top_bar_socials_url'] );
+                                                $platform = ucwords( str_replace( '-', ' ', pathinfo( $url, PATHINFO_FILENAME ) ) );
+                                                
+                                                echo '<a href="' . $url . '" target="_blank" aria-label="Share us on ' . $platform . '" title="' . $platform . '">';
+                                                echo '<i class="' . $icon . '"></i>';
+                                                echo '</a>';
+                                            }
+                                        }
+                                        echo '</div>';
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+        </div>
+        <?php endif; ?>
+        <!-- ==== / topbar end ==== -->
+        <!-- ==== header start ==== -->
+        <header class="header header-secondary position-relative">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="main-header__menu-box">
+                    <nav class="navbar p-0">
+                        <div class="navbar-logo">
+                        <?php                               
+                        if (has_custom_logo() && empty($header_1_logo['id'])) {
+                            the_custom_logo();
+                        } elseif (!empty($header_1_logo['id'])) {
+                            printf('<a href="%1$s"><img src="%2$s" alt="%3$s"/></a>', esc_url(get_home_url()), $header_1_logo['url'], $header_1_logo['alt']);
+                        } else {
+                            printf('<a class="d-inline-block site-title" href="%1$s">%2$s</a>', esc_url(get_home_url()), esc_html(get_bloginfo('title')));
+                        }
+                        ?>
+                        </div>
+                        <div class="navbar__menu-wrapper">
+                            <div class="navbar__menu d-none d-xl-block">
+                            
+                            <?php
+                            wp_nav_menu(array(
+                                'theme_location'  => 'main-menu',
+                                'menu_class'      => 'navbar__list',
+                                'container'       => 'div',
+                                'container_id'    => 'charifund_main_menu',
+                                'fallback_cb'     => 'charifund_theme_fallback_menu',
+                                'walker'          => new Custom_Menu_Walker(),
+                            ));
+                            ?>
+
+                            </div>
+                            <?php 
+                            if( $header_1_callus_enabled ): ?>
+                            <div class="contact-btn">
+                                <div class="contact-icon">
+                                    <i class="icon-support"></i>
+                                </div>
+                                <div class="contact-content">
+                                    <p><?php echo esc_html($header_1_callus_title); ?></p>
+                                    <a href="tel:<?php echo esc_url($header_1_callus_text); ?>"><?php echo esc_html($header_1_callus_text); ?> </a>
+                                </div>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="navbar__options">
+                            <div class="navbar__mobile-options ">
+
+                            <?php 
+                            if( $header_1_search_enabled ): ?>
+                                <div class="search-box">
+                                <button class="open-search" aria-label="search products"
+                                    title="open search box">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php 
+                            if( $header_1_right_btn_enabled ): ?>
+                                <a href="<?php echo esc_url($header_1_right_btn_url); ?>" class="btn--primary d-none d-md-flex"><?php echo esc_html($header_1_right_btn_text); ?><i class="fa-solid fa-arrow-right"></i></a>
+                            <?php endif; ?>
+
+                            </div>
+                            <button class="open-offcanvas-nav d-flex d-xl-none" aria-label="toggle mobile menu"
+                                title="open offcanvas menu">
+                            <span class="icon-bar top-bar"></span>
+                            <span class="icon-bar middle-bar"></span>
+                            <span class="icon-bar bottom-bar"></span>
+                            </button>
+                        </div>
+                    </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </header>
+        <!-- ==== / header end ==== -->
+        <!-- ==== mobile menu start ==== -->
+        <div class="mobile-menu mobile-menu--primary d-block d-xxl-none">
+            <nav class="mobile-menu__wrapper">
+                <div class="mobile-menu__header nav-fade">
+                    <div class="logo">
+                        <?php                               
+                        if (has_custom_logo() && empty($header_1_logo['id'])) {
+                            the_custom_logo();
+                        } elseif (!empty($header_1_logo['id'])) {
+                            printf('<a href="%1$s"><img src="%2$s" alt="%3$s"/></a>', esc_url(get_home_url()), $header_1_logo['url'], $header_1_logo['alt']);
+                        } else {
+                            printf('<a class="d-inline-block site-title" href="%1$s">%2$s</a>', esc_url(get_home_url()), esc_html(get_bloginfo('title')));
+                        }
+                        ?>
+                    </div>
+                    <button aria-label="close mobile menu" class="close-mobile-menu">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="mobile-menu__list">
+                    <?php
+                    wp_nav_menu(array(
+                        'theme_location'  => 'main-menu',
+                        'menu_class'      => 'navbar__list',
+                        'container'       => false,
+                        'walker'          => new Custom_Menu_Walker(),
+                        'fallback_cb'     => false,
+                    ));
+                    ?>
+                </div>
+
+                <?php if( $header_1_right_btn_enabled ): ?>
+                <div class="mobile-menu__cta nav-fade d-block d-md-none">
+                    <a href="<?php echo esc_url($header_1_right_btn_url); ?>" class="btn--primary ">
+                        <?php echo esc_html($header_1_right_btn_text); ?> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+                <?php endif; ?>
+
+                <?php
+                if ( ! empty( $header_1_top_bar_socials_repeater ) && is_array( $header_1_top_bar_socials_repeater ) ) {
+                    echo '<div class="mobile-menu__social social nav-fade">';
+                    foreach ( $header_1_top_bar_socials_repeater as $item ) {
+                        if ( ! empty( $item['header_1_top_bar_socials_icon'] ) && ! empty( $item['header_1_top_bar_socials_url'] ) ) {
+                            $icon = esc_attr( $item['header_1_top_bar_socials_icon'] );
+                            $url = esc_url( $item['header_1_top_bar_socials_url'] );
+                            $parsed_url = parse_url( $url );
+                            $platform = isset( $parsed_url['host'] ) ? ucwords( str_replace( 'www.', '', parse_url( $url, PHP_URL_HOST ) ) ) : 'Platform';
+                            $platform = str_replace( '.com', '', $platform );
+
+                            echo '<a href="' . $url . '" target="_blank" aria-label="Share us on ' . strtolower( $platform ) . '" title="' . strtolower( $platform ) . '">';
+                            echo '<i class="' . $icon . '"></i>';
+                            echo '</a>';
+                        }
+                    }
+                    echo '</div>';
+                }
+                ?>
+            </nav>
+
+            <!-- ==== CSS pour le dropdown mobile ==== -->
+            <style>
+                .dropdown-toggle-arrow {
+                    font-family: "Font Awesome 6 Free", Arial, sans-serif;
+                    font-weight: 900;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    height: 100%;
+                    width: 60px;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-left: 1px solid rgba(0,0,0,0.08);
+                    cursor: pointer;
+                    background: transparent;
+                    font-size: 1.2em;
+                    z-index: 2;
+                }
+            </style>
+        </div>
+        <div class="mobile-menu__backdrop"></div>
+        <!-- ==== / mobile menu end ==== -->
+
+
+    le fichier function contient la fonction est ceci et contien la class "Custom_Menu_Walker" :
+        <?php
+        /**
+        * Theme functions & definitations
+        *
+        * @link https://developer.wordpress.org/themes/basics/theme-functions/
+        *
+        * @package charifund
+        */
+
+        /**
+        * Define Theme Folder Path & URL Constant
+        * @package charifund
+        * @since 1.0.0
+        */
+
+        define('CHARIFUND_THEME_ROOT', get_template_directory());
+        define('CHARIFUND_THEME_ROOT_URL', get_template_directory_uri());
+        define('CHARIFUND_INC', CHARIFUND_THEME_ROOT . '/inc');
+        define('CHARIFUND_THEME_SETTINGS', CHARIFUND_INC . '/theme-settings');
+        define('CHARIFUND_THEME_SETTINGS_IMAGES', CHARIFUND_THEME_ROOT_URL . '/inc/theme-settings/images');
+        define('CHARIFUND_TGMA', CHARIFUND_INC . '/plugins/tgma');
+        define('CHARIFUND_DYNAMIC_STYLESHEETS', CHARIFUND_INC . '/theme-stylesheets');
+        define('CHARIFUND_CSS', CHARIFUND_THEME_ROOT_URL . '/assets/css');
+        define('CHARIFUND_JS', CHARIFUND_THEME_ROOT_URL . '/assets/js');
+        define('CHARIFUND_ASSETS', CHARIFUND_THEME_ROOT_URL . '/assets');
+        define('CHARIFUND_DEV', true);
+
+
+        /**
+        * Theme Initial File
+        * @package charifund
+        * @since 1.0.0
+        */
+        if (file_exists(CHARIFUND_INC . '/theme-init.php')) {
+            require_once CHARIFUND_INC . '/theme-init.php';
+        }
+
+
+        /**
+        * Codester Framework Functions
+        * @package charifund
+        * @since 1.0.0
+        */
+        if (file_exists(CHARIFUND_INC . '/theme-cs-function.php')) {
+            require_once CHARIFUND_INC . '/theme-cs-function.php';
+        }
+
+
+        /**
+        * Theme Helpers Functions
+        * @package charifund
+        * @since 1.0.0
+        */
+        if (file_exists(CHARIFUND_INC . '/theme-helper-functions.php')) {
+
+            require_once CHARIFUND_INC . '/theme-helper-functions.php';
+            if (!function_exists('charifund')) {
+                function charifund()
+                {
+                    return class_exists('Charifund_Helper_Functions') ? new Charifund_Helper_Functions() : false;
+                }
+            }
+        }
+        /**
+        * Nav menu fallback function
+        * @since 1.0.0
+        */
+        if (is_user_logged_in()) {
+            function charifund_theme_fallback_menu()
+            {
+                get_template_part('template-parts/default', 'menu');
+            }
+        }
+
+        // theme-color
+
+        if (file_exists(CHARIFUND_INC . '/theme-color.php')) {
+            require_once CHARIFUND_INC . '/theme-color.php';
+        }
+
+        // register_block_style
+
+        function charifund_register_block_styles() {
+            register_block_style(
+                'core/paragraph',
+                array(
+                    'name'  => 'fancy-paragraph',
+                    'label' => __( 'Fancy Paragraph', 'charifund' ),
+                )
+            );
+        }
+        add_action( 'init', 'charifund_register_block_styles' );
+
+
+        // register_block_pattern
+
+        function charifund_register_block_patterns() {
+            register_block_pattern(
+                'charifund/hero-section',
+                array(
+                    'title'       => __( 'Hero Section', 'charifund' ),
+                    'description' => _x( 'A custom hero section with image and text', 'Block pattern description', 'charifund' ),
+                    'content'     => '<!-- wp:paragraph --><p>Your content here...</p><!-- /wp:paragraph -->',
+                )
+            );
+        }
+        add_action( 'init', 'charifund_register_block_patterns' );
+
+
+        // custom-header
+
+        function charifund_custom_header_setup() {
+            add_theme_support( 'custom-header', array(
+                'default-image' => get_template_directory_uri() . '/inc/theme-settings/images/header/00.png',
+                'width'         => 1000,
+                'height'        => 250,
+                'flex-width'    => true,
+                'flex-height'   => true,
+            ) );
+        }
+        add_action( 'after_setup_theme', 'charifund_custom_header_setup' );
+
+
+        // custom-background
+
+        function charifund_custom_background_setup() {
+            add_theme_support( 'custom-background', array(
+                'default-color' => 'ffffff',
+            ) );
+        }
+        add_action( 'after_setup_theme', 'charifund_custom_background_setup' );
+
+
+        // header menu walker
+
+        class Custom_Menu_Walker extends Walker_Nav_Menu {
+
+            // Start Level (add class to <ul>)
+            public function start_lvl( &$output, $depth = 0, $args = null ) {
+                $indent = str_repeat("\t", $depth);
+                $classes = $depth === 0 ? 'navbar__sub-menu' : 'navbar__sub-menu navbar__sub-menu__nested';
+                $output .= "\n$indent<ul class=\"$classes\">\n";
+            }
+
+            // Start Element (add class to <li>)
+            public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+                $indent = ( $depth ) ? str_repeat("\t", $depth) : '';
+                $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+
+                // Add custom classes
+                $classes[] = 'navbar__item';
+                if ( in_array( 'menu-item-has-children', $classes ) ) {
+                    $classes[] = 'navbar__item--has-children';
+                }
+                $classes[] = 'nav-fade';
+
+                $class_names = join( ' ', array_filter( $classes ) );
+                $class_names = ' class="' . esc_attr( $class_names ) . '"';
+
+                $output .= $indent . '<li' . $class_names . '>';
+
+                $atts = array();
+                $atts['href'] = ! empty( $item->url ) ? $item->url : '';
+                $atts['aria-label'] = in_array( 'menu-item-has-children', $classes ) ? 'dropdown menu' : '';
+                $atts['class'] = in_array( 'menu-item-has-children', $classes ) ? 'navbar__dropdown-label dropdown-label-alter' : '';
+
+                $attributes = '';
+                foreach ( $atts as $attr => $value ) {
+                    if ( ! empty( $value ) ) {
+                        $attributes .= ' ' . $attr . '="' . esc_attr( $value ) . '"';
+                    }
+                }
+
+                $title = apply_filters( 'the_title', $item->title, $item->ID );
+
+                $item_output = $args->before;
+
+                // Si parent, on wrappe le <a> et le <span> dans une div
+                if ( in_array( 'menu-item-has-children', $classes ) ) {
+                    $item_output .= '<div class="navbar__dropdown-toggle" style="position:relative;display:flex;align-items:center;">';
+                    $item_output .= '<a' . $attributes . '>' . $args->link_before . $title . $args->link_after . '</a>';
+                    $item_output .= '<span class="dropdown-toggle-arrow" style="position:absolute;right:0;top:0;height:100%;width:60px;display:inline-flex;align-items:center;justify-content:center;border-left:1px solid rgba(0,0,0,0.08);cursor:pointer;font-size:1.2em;z-index:2;">+</span>';
+                    $item_output .= '</div>';
+                } else {
+                    $item_output .= '<a' . $attributes . '>' . $args->link_before . $title . $args->link_after . '</a>';
+                }
+
+                $item_output .= $args->after;
+
+                $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+            }
+        }

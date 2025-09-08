@@ -20,8 +20,8 @@ const Home = () => {
     },
     {
       icon: Users,
-      title: 'Équipe de confiance',
-      description: 'Une petite équipe de 3 personnes pour assurer la continuité du service.',
+      title: 'Intervenante de confiance',
+      description: 'Une intervenante dédiée pour assurer la continuité du service.',
     },
     {
       icon: HomeIcon,
@@ -48,22 +48,8 @@ const Home = () => {
         <div className="relative z-10 max-w-3xl mx-auto px-4 space-y-6 animate-fade-in">
           <h1 className="relative text-4xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg">
   Bienvenue sur le site de{" "}
-  <span className="relative inline-block text-primary">
+  <span className="relative inline-block text-primary px-3 py-1 bg-white rounded-lg">
     Nathalie Kucor
-    {/* Effet pinceau en background */}
-    <svg
-      className="absolute inset-0 -z-10 w-full h-full"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 500 100"
-      preserveAspectRatio="none"
-    >
-      <path
-        d="M10 50 Q 150 10, 300 50 T 490 40 
-           L 490 100 L 10 100 Z"
-        fill="white"
-        opacity="0.9"
-      />
-    </svg>
   </span>
 </h1>
 
@@ -78,7 +64,7 @@ const Home = () => {
               <Link to="/contact">Demander une intervention</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="text-lg px-8 hover:bg-white/10 hover:scale-105 transition-transform duration-300 text-white border-white">
-              <Link to="/prestations">Découvrir nos services</Link>
+              <Link to="/prestations">Découvrir mes services</Link>
             </Button>
           </div>
         </div>
@@ -110,8 +96,8 @@ const Home = () => {
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
                 Pour assurer une continuité de service optimale, même en cas d'absence, je travaille
-                en étroite collaboration avec une petite équipe de deux autres professionnels qualifiés,
-                partageant les mêmes valeurs d'engagement et de bienveillance.
+                privilégiant une approche personnalisée et professionnelle,
+                basée sur l'écoute, la bienveillance et le respect de votre rythme de vie.
               </p>
             </div>
           </div>
@@ -122,7 +108,7 @@ const Home = () => {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Pourquoi choisir nos services ?</h2>
+            <h2 className="text-3xl font-bold text-gray-900">Pourquoi choisir mes services ?</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Découvrez les avantages de faire appel à un intervenant qualifié et expérimenté.
             </p>
@@ -176,12 +162,12 @@ const Home = () => {
       {/* CTA Section */}
       <section className="py-16 bg-primary text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-4">Prêt à bénéficier de nos services ?</h2>
+          <h2 className="text-3xl font-bold mb-4">Prêt à bénéficier de mes services ?</h2>
           <p className="text-xl mb-8 opacity-90">
-            Contactez-nous dès aujourd'hui pour une évaluation personnalisée de vos besoins.
+            Contactez-moi dès aujourd'hui pour une évaluation personnalisée de vos besoins.
           </p>
           <Button asChild size="lg" variant="secondary" className="text-lg px-8">
-            <Link to="/contact">Nous contacter</Link>
+            <Link to="/contact">Me contacter</Link>
           </Button>
         </div>
       </section>

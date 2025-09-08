@@ -10,7 +10,7 @@ const Avis = () => {
       age: '85 ans',
       location: 'Paris',
       rating: 5,
-      text: '[Nom de la cliente] est une personne formidable. Elle est toujours souriante, attentive et très professionnelle. Grâce à elle, je peux rester chez moi en toute sérénité. Je la recommande vivement !',
+      text: 'Nathalie est une personne formidable. Elle est toujours souriante, attentive et très professionnelle. Grâce à elle, je peux rester chez moi en toute sérénité. Je la recommande vivement !',
       highlight: 'Professionnalisme et bienveillance'
     },
     {
@@ -42,7 +42,6 @@ const Avis = () => {
   const stats = [
     { number: '100%', label: 'Clients satisfaits' },
     { number: '5/5', label: 'Note moyenne' },
-    { number: '3', label: 'Professionnels qualifiés' },
     { number: '24h/7j', label: 'Disponibilité' }
   ];
 
@@ -64,8 +63,8 @@ const Avis = () => {
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold text-gray-900">Avis Clients</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            La satisfaction de nos bénéficiaires est notre priorité. Découvrez les témoignages 
-            de personnes que nous avons accompagnées.
+            La satisfaction de mes bénéficiaires est notre priorité. Découvrez les témoignages 
+            de personnes que j'ai accompagnées.
           </p>
         </div>
       </section>
@@ -73,7 +72,7 @@ const Avis = () => {
       {/* Stats Section */}
       <section className="bg-primary text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-3xl md:text-4xl font-bold mb-2">{stat.number}</div>
@@ -89,7 +88,7 @@ const Avis = () => {
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl font-bold text-gray-900">Témoignages</h2>
           <p className="text-xl text-gray-600">
-            Leurs retours d'expérience sont la meilleure preuve de notre engagement 
+            Leurs retours d'expérience sont la meilleure preuve de mon engagement 
             et de la qualité de nos services.
           </p>
         </div>
@@ -149,7 +148,7 @@ const Avis = () => {
                 <h3 className="font-semibold text-blue-800">Confidentialité</h3>
                 <p className="text-blue-700 text-sm">
                   Ces témoignages sont anonymisés pour des raisons de confidentialité. 
-                  Le respect de la vie privée de nos bénéficiaires est une priorité absolue.
+                  Le respect de la vie privée de mes bénéficiaires est une priorité absolue.
                 </p>
               </div>
             </div>
@@ -161,10 +160,10 @@ const Avis = () => {
       <section className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Rejoignez nos clients satisfaits
+            Rejoignez mes clients satisfaits
           </h2>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            Faites confiance à notre expérience et à notre engagement pour vous accompagner 
+            Faites confiance à mon expérience et à mon engagement pour vous accompagner 
             dans votre quotidien avec bienveillance et professionnalisme.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

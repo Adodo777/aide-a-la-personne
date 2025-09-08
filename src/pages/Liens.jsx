@@ -124,7 +124,7 @@ const Liens = () => {
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-gray-600 text-sm leading-relaxed">{aid.description}</p>
+                <p className="text-gray-600 text-base leading-relaxed">{aid.description}</p>
                 <div className="pt-2 border-t">
                   {aid.link ? (
                     <Button variant="outline" size="sm" asChild className="w-full">
@@ -175,7 +175,7 @@ const Liens = () => {
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <p className="text-gray-600 text-sm leading-relaxed">{resource.description}</p>
+                  <p className="text-gray-600 text-base leading-relaxed">{resource.description}</p>
                   <div className="pt-2 border-t">
                     <Button variant="outline" size="sm" asChild className="w-full">
                       <a href={resource.link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-2">
@@ -191,37 +191,37 @@ const Liens = () => {
         </div>
       </section>
 
-      {/* Help Section */}
+      {/* Ressources complémentaires */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <p className="text-gray-600 ">
+            N'hésitez pas à consulter ces ressources pour obtenir des informations complémentaires 
+            et vous accompagner dans vos démarches. Ces liens sont régulièrement mis à jour 
+            pour vous offrir les informations les plus récentes.
+          </p>
+        </div>
+      </section>
+
+      {/* Section d'aide */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <Card className="border-primary/20 bg-primary/5">
           <CardContent className="p-8 text-center space-y-4">
             <FileText className="h-12 w-12 text-primary mx-auto" />
             <h3 className="text-2xl font-bold text-gray-900">Besoin d'aide pour vos démarches ?</h3>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Nous pouvons vous accompagner dans vos démarches administratives et vous aider 
+              Je peux vous accompagner dans vos démarches administratives et vous aider 
               à identifier les aides auxquelles vous avez droit.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Button asChild size="lg">
-                <Link to="/contact">Nous contacter</Link>
+                <Link to="/contact">Me contacter</Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link to="/prestations">Nos services d'accompagnement</Link>
+                <Link to="/prestations">Mes services d'accompagnement</Link>
               </Button>
             </div>
           </CardContent>
         </Card>
-      </section>
-
-      {/* Additional Resources */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <p className="text-gray-600">
-            N'hésitez pas à consulter ces ressources pour obtenir des informations complémentaires 
-            et vous accompagner dans vos démarches. Ces liens sont régulièrement mis à jour 
-            pour vous offrir les informations les plus récentes.
-          </p>
-        </div>
       </section>
     </div>
   );

@@ -83,9 +83,9 @@ const Prestations = () => {
       {/* Header Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-gray-900">Nos Prestations</h1>
+          <h1 className="text-4xl font-bold text-gray-900">Mes Prestations</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Nous proposons une gamme complète de services d'aide à domicile et d'auxiliaire de vie, 
+            Je propose une gamme complète de services d'aide à domicile et d'auxiliaire de vie, 
             adaptés aux besoins spécifiques de chaque personne.
           </p>
         </div>
@@ -126,9 +126,9 @@ const Prestations = () => {
       <section className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Nos Avantages</h2>
+            <h2 className="text-3xl font-bold text-gray-900">Mes Avantages</h2>
             <p className="text-xl text-gray-600">
-              Ce qui nous différencie dans l'accompagnement à domicile
+              Ce qui me différencie dans l'accompagnement à domicile
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -154,8 +154,8 @@ const Prestations = () => {
             Services personnalisables et évolutifs
           </h2>
           <p className="text-lg text-gray-600 mb-6 max-w-3xl mx-auto">
-            Nos services sont personnalisables et évolutifs en fonction de vos besoins. 
-            Chaque situation est unique, c'est pourquoi nous adaptons notre accompagnement 
+            Mes services sont personnalisables et évolutifs en fonction de vos besoins. 
+            Chaque situation est unique, c'est pourquoi j'adapte notre accompagnement 
             à votre rythme de vie et à vos préférences.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -95,7 +95,7 @@ const Contact = () => {
           <h1 className="text-4xl font-bold text-gray-900">Contact</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Pour toute question, demande d'information ou pour solliciter une intervention, 
-            n'hésitez pas à nous contacter. Nous sommes à votre écoute pour vous accompagner au mieux.
+            n'hésitez pas à me contacter. Je suis à votre écoute pour vous accompagner au mieux.
           </p>
         </div>
       </section>
@@ -132,7 +132,7 @@ const Contact = () => {
                   <span>Formulaire de demande d'intervention</span>
                 </CardTitle>
                 <p className="text-gray-600">
-                  Merci de remplir le formulaire ci-dessous. Nous vous recontacterons dans les plus brefs délais.
+                  Merci de remplir le formulaire ci-dessous. Je vous recontacterai dans les plus brefs délais.
                 </p>
               </CardHeader>
               <CardContent>
@@ -300,7 +300,7 @@ const Contact = () => {
                 </div>
                 <div className="pt-4 border-t">
                   <p className="text-sm text-gray-600">
-                    Nous nous adaptons à vos horaires et contraintes pour vous offrir 
+                    Je m'adapte à vos horaires et contraintes pour vous offrir 
                     le meilleur service possible.
                   </p>
                 </div>
@@ -323,7 +323,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-medium">Contact rapide</h4>
-                      <p className="text-sm text-gray-600">Nous vous recontactons sous 24h pour échanger sur vos besoins.</p>
+                      <p className="text-sm text-gray-600">Je vous recontacte sous 24h pour échanger sur vos besoins.</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">

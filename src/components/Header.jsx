@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import logo from '../assets/aide_a_la_personne_logo.jpg';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,9 +25,9 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <Heart className="h-8 w-8 text-primary" />
+            <img src={logo} alt="Logo" className="h-10 w-10" />
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-gray-900">Aide à Domicile</span>
+              <span className="text-xl font-bold text-gray-900">Aide à la personne</span>
               <span className="text-sm text-gray-600">Services professionnels</span>
             </div>
           </Link>
