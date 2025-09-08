@@ -1,43 +1,18 @@
+import { useEffect, useState } from 'react'; // Ajouté
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Star, Quote, MapPin, User } from 'lucide-react';
 
 const Avis = () => {
-  const testimonials = [
-    {
-      name: 'Madame Dupont',
-      age: '85 ans',
-      location: 'Paris',
-      rating: 5,
-      text: 'Nathalie est une personne formidable. Elle est toujours souriante, attentive et très professionnelle. Grâce à elle, je peux rester chez moi en toute sérénité. Je la recommande vivement !',
-      highlight: 'Professionnalisme et bienveillance'
-    },
-    {
-      name: 'Monsieur Martin',
-      age: '72 ans',
-      location: 'Lyon',
-      rating: 5,
-      text: 'Mon auxiliaire de vie est d\'une aide précieuse. Elle m\'accompagne pour mes courses, mes rendez-vous et m\'aide à maintenir mon autonomie. Je me sens en sécurité et bien entouré.',
-      highlight: 'Accompagnement et sécurité'
-    },
-    {
-      name: 'Famille Dubois',
-      age: '',
-      location: 'Marseille',
-      rating: 5,
-      text: 'Nous sommes très reconnaissants envers [Nom de la cliente] et son équipe. Ils ont su s\'adapter aux besoins évolutifs de notre mère avec beaucoup de bienveillance et de flexibilité. La continuité de l\'intervenante est un vrai plus.',
-      highlight: 'Adaptabilité et continuité'
-    },
-    {
-      name: 'Madame Lefevre',
-      age: '90 ans',
-      location: 'Bordeaux',
-      rating: 5,
-      text: 'Je ne pensais pas pouvoir rester aussi longtemps chez moi. Mon aide-soignante est devenue une amie. Elle est toujours là pour moi, avec une gentillesse et un dévouement exceptionnels.',
-      highlight: 'Relation de confiance'
-    }
-  ];
+  const [testimonials, setTestimonials] = useState([]);
+
+  useEffect(() => {
+    fetch('/testimonials.json')
+      .then((res) => res.json())
+      .then((data) => setTestimonials(data.testimonials || []))
+      .catch(() => setTestimonials([]));
+  }, []);
 
   const stats = [
     { number: '100%', label: 'Clients satisfaits' },
