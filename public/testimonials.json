@@ -37,6 +37,12 @@
       "rating": 5,
       "text": "Super aide !",
       "highlight": "Bienveillance et empathie; Professionnalisme"
+    },
+    {
+      "name": "Last",
+      "rating": 4,
+      "text": "Malsg",
+      "highlight": ""
     }
   ]
 }
