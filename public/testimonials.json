@@ -31,6 +31,12 @@
       "rating": 5,
       "text": "Je ne pensais pas pouvoir rester aussi longtemps chez moi. Mon aide-soignante est devenue une amie. Elle est toujours là pour moi, avec une gentillesse et un dévouement exceptionnels.",
       "highlight": "Relation de confiance"
+    },
+    {
+      "name": "Test User",
+      "rating": 5,
+      "text": "Super aide !",
+      "highlight": "Bienveillance et empathie; Professionnalisme"
     }
   ]
 }
