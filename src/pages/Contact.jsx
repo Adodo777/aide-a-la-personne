@@ -36,12 +36,21 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Ici, vous pourriez ajouter la logique d'envoi du formulaire
-    console.log('Données du formulaire:', formData);
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 5000);
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycbwCksSj9qd93watddsCIsmL0qAlOwLgLnv50girSBK7cwhWfb7OEhAQkVlbcL8wzJc/exec', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      setIsSubmitted(true);
+      setTimeout(() => setIsSubmitted(false), 5000);
+    } catch (err) {
+      alert("Erreur lors de l'envoi du formulaire.");
+    }
   };
 
   const contactInfo = [
@@ -92,7 +101,7 @@ const Contact = () => {
       {/* Header Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-gray-900">Contact</h1>
+          <h1 className="text-4xl font-bold text-primary">Contact</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Pour toute question, demande d'information ou pour solliciter une intervention, 
             n'hésitez pas à me contacter. Je suis à votre écoute pour vous accompagner au mieux.

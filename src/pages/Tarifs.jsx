@@ -54,7 +54,7 @@ const Tarifs = () => {
       {/* Header Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-gray-900">Grille Tarifaire</h1>
+          <h1 className="text-4xl font-bold text-primary">Grille Tarifaire</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Mes tarifs sont transparents et adaptés à la nature des prestations. 
             Je m'engage à vous offrir un service de qualité à un prix juste.
@@ -99,13 +99,17 @@ const Tarifs = () => {
               </table>
             </div>
           </CardContent>
+          <div className="px-6 py-4 bg-primary/5 text-center">
+            <Button asChild size="lg">
+              <Link to="/contact">Demander un devis</Link>
+            </Button>
+          </div>
         </Card>
       </section>
-
-      {/* Pricing Factors */}
+      {/* Factors Influencing Pricing */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4 mb-12">
-          <h2 className="text-3xl font-bold text-gray-900">Facteurs influençant les tarifs</h2>
+          <h2 className="text-3xl font-bold text-primary">Facteurs influençant les tarifs</h2>
           <p className="text-xl text-gray-600">
             Plusieurs éléments sont pris en compte pour établir un devis personnalisé
           </p>
@@ -127,13 +131,13 @@ const Tarifs = () => {
 
       {/* Important Notice */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Card className="border-amber-200 bg-amber-50">
+        <Card className="border-secondary bg-secondary/5">
           <CardContent className="p-6">
             <div className="flex items-start space-x-3">
-              <Info className="h-6 w-6 text-amber-600 flex-shrink-0 mt-0.5" />
+              <Info className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
               <div className="space-y-2">
-                <h3 className="font-semibold text-amber-800">Information importante</h3>
-                <p className="text-amber-700 text-sm leading-relaxed">
+                <h3 className="font-semibold text-primary">Information importante</h3>
+                <p className="text-gray-700 text-sm leading-relaxed">
                   Les tarifs peuvent varier en fonction de la complexité des tâches, des horaires 
                   (jour/nuit, semaine/week-end, jours fériés) et des aides financières auxquelles 
                   vous pouvez prétendre (APA, PCH, etc.). Un devis détaillé sera établi après une 
