@@ -39,7 +39,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch('https://script.google.com/macros/s/AKfycbwCksSj9qd93watddsCIsmL0qAlOwLgLnv50girSBK7cwhWfb7OEhAQkVlbcL8wzJc/exec', {
+      await fetch('https://script.google.com/macros/s/AKfycbxlkG_nUD9d75UpmtqH3y2IGwZTlUe4bSxLzZztsyADze-YZkidI8Q94sslS3wN9l33/exec', {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: {
