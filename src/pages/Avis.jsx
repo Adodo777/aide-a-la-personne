@@ -103,6 +103,17 @@ const Avis = () => {
             </Card>
           ))}
         </div>
+        <div className="text-center mt-12">
+          <Button asChild size="lg" className="bg-primary text-white">
+            <a
+              href="https://forms.gle/ufFY8vUgr3SYM4Em7"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Avez vous été accompagné(e) par mes soins ? Laissez votre avis !
+            </a>
+          </Button>
+        </div>
       </section>
 
       {/* Confidentiality Notice */}
