@@ -15,6 +15,7 @@ import {
   MessageCircle
 } from 'lucide-react';
 import { set } from 'date-fns';
+import { Helmet } from "react-helmet";
 
 
 const Contact = () => {
@@ -114,6 +115,18 @@ const Contact = () => {
 
   return (
     <div className="space-y-16 py-8">
+      <Helmet>
+        <title>Contact - Aide à domicile Nathalie Kucor</title>
+        <meta name="description" content="Contactez Nathalie Kucor, aide-soignante diplômée d'État à Saint-Outrille, pour toute demande d'information ou intervention à domicile. Réponse rapide et accompagnement personnalisé." />
+        <meta name="keywords" content="contact, aide à domicile, Saint-Outrille, intervention, demande, accompagnement, aide-soignante, services à la personne" />
+        <meta property="og:title" content="Contact - Aide à domicile Nathalie Kucor" />
+        <meta property="og:description" content="Formulaire de contact et informations pour joindre Nathalie Kucor, aide à domicile à Saint-Outrille." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://aide-a-la-personne.vercel.app/contact" />
+        <meta property="og:image" content="https://aide-a-la-personne.vercel.app/assets/image_bienveillance_ecoute_2.png" />
+        <meta name="robots" content="index, follow" />
+        <html lang="fr" />
+      </Helmet>
       {/* Header Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4">

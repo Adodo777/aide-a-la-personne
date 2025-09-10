@@ -11,6 +11,7 @@ import {
   Calendar,
   DollarSign
 } from 'lucide-react';
+import { Helmet } from "react-helmet";
 
 const Tarifs = () => {
   const paymentMethods = [
@@ -51,8 +52,20 @@ const Tarifs = () => {
 
   return (
     <div className="space-y-16 py-8">
+      <Helmet>
+        <title>Tarifs - Aide à domicile Nathalie Kucor</title>
+        <meta name="description" content="Découvrez la grille tarifaire transparente et adaptée aux prestations d'aide à domicile proposées par Nathalie Kucor à Saint-Outrille. Devis personnalisé sur demande." />
+        <meta name="keywords" content="tarifs, grille tarifaire, aide à domicile, Saint-Outrille, prestations, devis, services à la personne" />
+        <meta property="og:title" content="Tarifs - Aide à domicile Nathalie Kucor" />
+        <meta property="og:description" content="Découvrez la grille tarifaire transparente et adaptée aux prestations d'aide à domicile proposées par Nathalie Kucor à Saint-Outrille. Devis personnalisé sur demande." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://aide-a-la-personne.vercel.app/tarifs" />
+        <meta property="og:image" content="https://aide-a-la-personne.vercel.app/assets/image_bienveillance_ecoute_2.png" />
+        <meta name="robots" content="index, follow" />
+        <html lang="fr" />
+      </Helmet>
       {/* Header Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in-up">
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold text-primary">Grille Tarifaire</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -63,7 +76,7 @@ const Tarifs = () => {
       </section>
 
       {/* Pricing Table */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
         <Card className="overflow-hidden">
           <CardHeader className="bg-primary/5">
             <CardTitle className="text-2xl text-center">Tarifs Horaires</CardTitle>
@@ -79,19 +92,19 @@ const Tarifs = () => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
-                  <tr className="hover:bg-gray-50">
+                  <tr className="hover:bg-gray-50 transition-colors duration-300">
                     <td className="px-6 py-4 text-sm text-gray-900">Aide à la personne</td>
                     <td className="px-6 py-4 text-sm text-center text-gray-600">Sur devis</td>
                   </tr>
-                  <tr className="hover:bg-gray-50">
+                  <tr className="hover:bg-gray-50 transition-colors duration-300">
                     <td className="px-6 py-4 text-sm text-gray-900">Entretien du cadre de vie</td>
                     <td className="px-6 py-4 text-sm text-center text-gray-600">Sur devis</td>
                   </tr>
-                  <tr className="hover:bg-gray-50">
+                  <tr className="hover:bg-gray-50 transition-colors duration-300">
                     <td className="px-6 py-4 text-sm text-gray-900">Accompagnement</td>
                     <td className="px-6 py-4 text-sm text-center text-gray-600">Sur devis</td>
                   </tr>
-                  <tr className="hover:bg-gray-50">
+                  <tr className="hover:bg-gray-50 transition-colors duration-300">
                     <td className="px-6 py-4 text-sm text-gray-900">Soins d'hygiène et confort</td>
                     <td className="px-6 py-4 text-sm text-center text-gray-600">Sur devis</td>
                   </tr>
@@ -100,14 +113,14 @@ const Tarifs = () => {
             </div>
           </CardContent>
           <div className="px-6 py-4 bg-primary/5 text-center">
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="transition-transform duration-300 hover:scale-105">
               <Link to="/contact">Demander un devis</Link>
             </Button>
           </div>
         </Card>
       </section>
       {/* Factors Influencing Pricing */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl font-bold text-primary">Facteurs influençant les tarifs</h2>
           <p className="text-xl text-gray-600">
@@ -116,9 +129,9 @@ const Tarifs = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {factors.map((factor, index) => (
-            <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+            <Card key={index} className="text-center hover:shadow-lg transition-shadow animate-fade-in-up" style={{ animationDelay: `${0.3 + index * 0.1}s` }}>
               <CardContent className="p-6 space-y-4">
-                <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+                <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110 hover:rotate-6">
                   <factor.icon className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900">{factor.title}</h3>
@@ -130,7 +143,7 @@ const Tarifs = () => {
       </section>
 
       {/* Important Notice */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
         <Card className="border-secondary bg-secondary/5">
           <CardContent className="p-6">
             <div className="flex items-start space-x-3">
@@ -150,7 +163,7 @@ const Tarifs = () => {
       </section>
 
       {/* Payment Methods */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-gray-50 py-16 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-3xl font-bold text-primary">Modes de Paiement</h2>
@@ -160,9 +173,9 @@ const Tarifs = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {paymentMethods.map((method, index) => (
-              <Card key={index} className="text-center">
+              <Card key={index} className="text-center animate-fade-in-up" style={{ animationDelay: `${0.5 + index * 0.1}s` }}>
                 <CardContent className="p-6 space-y-4">
-                  <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+                  <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110 hover:rotate-6">
                     <method.icon className="h-8 w-8 text-primary" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900">{method.title}</h3>
@@ -171,7 +184,7 @@ const Tarifs = () => {
               </Card>
             ))}
           </div>
-          <div className="mt-8 text-center">
+          <div className="mt-8 text-center animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
             <p className="text-gray-600">
               Je peux vous accompagner dans les démarches pour bénéficier des aides financières disponibles.
             </p>
@@ -180,7 +193,7 @@ const Tarifs = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
         <div className="bg-primary/5 rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold text-primary mb-4">
             Besoin d'un devis personnalisé ?
@@ -189,10 +202,10 @@ const Tarifs = () => {
             Contactez-nous pour une évaluation gratuite de vos besoins et un devis détaillé.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="transition-transform duration-300 hover:scale-105">
               <Link to="/contact">Demander un devis</Link>
             </Button>
-            <Button asChild variant="outline" size="lg">
+            <Button asChild variant="outline" size="lg" className="transition-transform duration-300 hover:scale-105">
               <Link to="/prestations">Voir nos services</Link>
             </Button>
           </div>

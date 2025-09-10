@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'; // Ajouté
+import { useEffect, useState } from 'react';
+import { Helmet } from "react-helmet";
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { Star, Quote, MapPin, User } from 'lucide-react';
+import { Star, Quote, User } from 'lucide-react';
 
 const Avis = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -24,8 +25,8 @@ const Avis = () => {
     return [...Array(5)].map((_, i) => (
       <Star
         key={i}
-        className={`h-5 w-5 ${
-          i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
+        className={`h-5 w-5 transition-transform duration-300 ${
+          i < rating ? 'text-yellow-400 fill-current scale-110' : 'text-gray-300'
         }`}
       />
     ));
@@ -33,8 +34,20 @@ const Avis = () => {
 
   return (
     <div className="space-y-16 py-8">
+      <Helmet>
+        <title>Avis clients - Aide à domicile Nathalie Kucor</title>
+        <meta name="description" content="Découvrez les avis et témoignages des bénéficiaires accompagnés par Nathalie Kucor, aide-soignante diplômée d'État à Saint-Outrille. Satisfaction, confiance et bienveillance au cœur de chaque intervention." />
+        <meta name="keywords" content="avis, témoignages, aide à domicile, Saint-Outrille, satisfaction, confiance, bienveillance, services à la personne" />
+        <meta property="og:title" content="Avis clients - Aide à domicile Nathalie Kucor" />
+        <meta property="og:description" content="Retrouvez les avis et retours d'expérience des personnes accompagnées par Nathalie Kucor, aide-soignante à domicile à Saint-Outrille." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://aide-a-la-personne.vercel.app/avis" />
+        <meta property="og:image" content="https://aide-a-la-personne.vercel.app/assets/image_bienveillance_ecoute_2.png" />
+        <meta name="robots" content="index, follow" />
+        <html lang="fr" />
+      </Helmet>
       {/* Header Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in-up">
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold text-primary">Avis Clients</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -45,19 +58,19 @@ const Avis = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-primary text-white py-16">
+      <section className="bg-primary text-white py-16 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             {stats.map((stat, index) => (
               <div
                 key={index}
                 className={`text-center ${
-                  // Si en grid-cols-2 (mobile), centrer le dernier élément
                   index === 2 ? 'col-span-2 md:col-span-1 flex flex-col justify-center' : ''
                 }`}
+                style={{ animationDelay: `${0.15 + index * 0.1}s` }}
               >
-                <div className="text-3xl md:text-4xl font-bold mb-2">{stat.number}</div>
-                <div className="text-sm md:text-base opacity-90">{stat.label}</div>
+                <div className="text-3xl md:text-4xl font-bold mb-2 animate-fade-in-up">{stat.number}</div>
+                <div className="text-sm md:text-base opacity-90 animate-fade-in-up">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -65,7 +78,7 @@ const Avis = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl font-bold text-primary">Témoignages</h2>
           <p className="text-xl text-gray-600">
@@ -77,12 +90,13 @@ const Avis = () => {
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}
-              className="mb-8 break-inside-avoid bg-white border border-gray-200 shadow-sm rounded-2xl flex flex-col transition-transform hover:scale-[1.02]"
+              className="mb-8 break-inside-avoid bg-white border border-gray-200 shadow-sm rounded-2xl flex flex-col transition-transform hover:scale-[1.02] animate-fade-in-up"
+              style={{ animationDelay: `${0.3 + index * 0.1}s` }}
             >
               <CardContent className="p-8 space-y-6 flex flex-col h-full">
                 {/* Avatar & Name */}
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-primary/30 to-blue-200 flex items-center justify-center shadow">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-primary/30 to-blue-200 flex items-center justify-center shadow transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
                     <User className="h-7 w-7 text-primary" />
                   </div>
                   <div>
@@ -91,20 +105,20 @@ const Avis = () => {
                   </div>
                 </div>
                 {/* Quote */}
-                <blockquote className="relative bg-gray-50 rounded-xl p-5 text-gray-700 italic border-l-4 border-primary flex items-start justify-between">
+                <blockquote className="relative bg-gray-50 rounded-xl p-5 text-gray-700 italic border-l-4 border-primary flex items-start justify-between transition-transform duration-300 hover:scale-105">
                   <span>{testimonial.text}</span>
                   <Quote className="h-8 w-8 text-primary/20 ml-4 flex-shrink-0" />
                 </blockquote>
                 {/* Highlight */}
-                <span className="inline-block bg-primary/10 text-primary font-semibold px-4 py-2 rounded-full text-sm mt-auto">
+                <span className="inline-block bg-primary/10 text-primary font-semibold px-4 py-2 rounded-full text-sm mt-auto transition-transform duration-300 hover:scale-105">
                   {testimonial.highlight}
                 </span>
               </CardContent>
             </Card>
           ))}
         </div>
-        <div className="text-center mt-12">
-          <Button asChild size="lg" className="bg-primary text-white">
+        <div className="text-center mt-12 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+          <Button asChild size="lg" className="bg-primary text-white transition-transform duration-300 hover:scale-105">
             <a
               href="https://forms.gle/ufFY8vUgr3SYM4Em7"
               target="_blank"
@@ -117,7 +131,7 @@ const Avis = () => {
       </section>
 
       {/* Confidentiality Notice */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
         <Card className="border-secondary bg-secondary/5">
           <CardContent className="p-6">
             <div className="flex items-start space-x-3">
@@ -135,7 +149,7 @@ const Avis = () => {
       </section>
 
       {/* Trust Section */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-gray-50 py-16 animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-primary mb-4">
             Rejoignez mes clients satisfaits
@@ -145,10 +159,10 @@ const Avis = () => {
             dans votre quotidien avec bienveillance et professionnalisme.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="transition-transform duration-300 hover:scale-105">
               <Link to="/contact">Me contacter</Link>
             </Button>
-            <Button asChild variant="outline" size="lg">
+            <Button asChild variant="outline" size="lg" className="transition-transform duration-300 hover:scale-105">
               <Link to="/prestations">Découvrir mes services</Link>
             </Button>
           </div>

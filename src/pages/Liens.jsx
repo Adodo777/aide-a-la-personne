@@ -11,6 +11,7 @@ import {
   Globe,
   Users
 } from 'lucide-react';
+import { Helmet } from "react-helmet";
 
 const Liens = () => {
   const financialAids = [
@@ -66,6 +67,18 @@ const Liens = () => {
 
   return (
     <div className="space-y-16 py-8">
+      <Helmet>
+        <title>Liens Utiles - Aide à domicile Nathalie Kucor</title>
+        <meta name="description" content="Pour vous accompagner dans vos démarches et vous informer sur les aides disponibles, voici une liste de liens utiles vers des organismes et institutions clés." />
+        <meta name="keywords" content="liens utiles, aides financières, autonomie, santé, retraite, information officielle, aide à domicile" />
+        <meta property="og:title" content="Liens Utiles - Aide à domicile Nathalie Kucor" />
+        <meta property="og:description" content="Pour vous accompagner dans vos démarches et vous informer sur les aides disponibles, voici une liste de liens utiles vers des organismes et institutions clés." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://aide-a-la-personne.vercel.app/liens" />
+        <meta property="og:image" content="https://aide-a-la-personne.vercel.app/assets/image_bienveillance_ecoute_2.png" />
+        <meta name="robots" content="index, follow" />
+        <html lang="fr" />
+      </Helmet>
       {/* Header Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4">
