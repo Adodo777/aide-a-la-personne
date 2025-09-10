@@ -43,7 +43,7 @@ const Contact = () => {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'text/plain'
         }
       });
       setIsSubmitted(true);
