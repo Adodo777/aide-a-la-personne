@@ -69,7 +69,7 @@ const Prestations = () => {
     {
       icon: Heart,
       title: 'Approche personnalisée',
-      description: 'Chaque intervention est adaptée à votre situation'
+      description: 'Toutes mes interventions sont adaptées à votre situation à l\'instant T'
     },
     {
       icon: Users,
@@ -85,8 +85,7 @@ const Prestations = () => {
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold text-primary">Mes Prestations</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Je propose une gamme complète de services d'aide à domicile et d'auxiliaire de vie, 
-            adaptés aux besoins spécifiques de chaque personne.
+            Je vous propose une gamme complète d'aide à la personne et d'aide soignante confirmée, adaptée à vos besoins spécifiques.
           </p>
         </div>
       </section>

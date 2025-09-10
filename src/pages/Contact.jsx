@@ -73,19 +73,19 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Téléphone',
-      value: '[Numéro de téléphone]',
+      value: '06.95.33.46.62',
       description: 'Disponible 7j/7 pour les urgences'
     },
     {
       icon: Mail,
       title: 'Email',
-      value: '[Adresse email]',
+      value: 'naty.36@live.fr',
       description: 'Réponse sous 24h'
     },
     {
       icon: MapPin,
       title: 'Adresse',
-      value: '[Adresse postale]',
+      value: '10 route des Bois – 18310 SAINT-OUTRILLE',
       description: 'Zone d\'intervention'
     },
     {

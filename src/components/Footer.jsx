@@ -13,8 +13,7 @@ const Footer = () => {
               <span className="text-lg font-bold text-gray-900">Aide à la personne</span>
             </div>
             <p className="text-gray-600 text-base">
-              Services d'aide à domicile et d'auxiliaire de vie professionnels. 
-              Une approche humaine et personnalisée pour votre bien-être.
+              Aide à la personne et aide soignante confirmées. Une approche humaine pour votre bien-être.
             </p>
           </div>
 
@@ -24,15 +23,15 @@ const Footer = () => {
             <div className="space-y-2">
               <div className="flex items-center space-x-2 text-gray-600">
                 <Phone className="h-4 w-4" />
-                <span className="text-base">[Numéro de téléphone]</span>
+                <span className="text-base">06.95.33.46.62</span>
               </div>
               <div className="flex items-center space-x-2 text-gray-600">
                 <Mail className="h-4 w-4" />
-                <span className="text-base">[Adresse email]</span>
+                <span className="text-base">naty.36@live.fr</span>
               </div>
               <div className="flex items-center space-x-2 text-gray-600">
                 <MapPin className="h-4 w-4" />
-                <span className="text-base">[Adresse postale]</span>
+                <span className="text-base">10 route des Bois – 18310 SAINT-OUTRILLE</span>
               </div>
             </div>
           </div>
