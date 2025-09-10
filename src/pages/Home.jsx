@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Heart, Clock, Users, Home as HomeIcon } from 'lucide-react';
-import imageConfiance from '../assets/image_confiance_bienveillance_1.png';
 import imageBienveillance from '../assets/image_bienveillance_ecoute_2.png';
 import imageAccompagnement from '../assets/image_accompagnement_domicile_3.png';
 
@@ -47,11 +46,11 @@ const Home = () => {
         {/* Contenu principal centré */}
         <div className="relative z-10 max-w-3xl mx-auto px-4 space-y-6 animate-fade-in">
           <h1 className="relative text-4xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg">
-  Bienvenue sur le site de{" "}
-  <span className="relative inline-block text-primary px-3 py-1 bg-white rounded-lg">
-    Nathalie Kucor
-  </span>
-</h1>
+            Bienvenue sur le site de{" "}
+            <span className="relative inline-block text-primary px-3 py-1 bg-white rounded-lg">
+              Nathalie Kucor
+            </span>
+          </h1>
 
 
           <p className="text-lg lg:text-xl text-gray-200 leading-relaxed">
@@ -88,7 +87,7 @@ const Home = () => {
               />
             </div>
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-gray-900">Ma Mission</h2>
+              <h2 className="text-3xl font-bold text-primary">Ma Mission</h2>
               <p className="text-lg text-gray-600 leading-relaxed">
                 Ma mission est de vous offrir un soutien adapté à vos besoins, sans que le temps
                 ne soit "calculé à la minute". Je privilégie une approche humaine et personnalisée,
@@ -108,7 +107,7 @@ const Home = () => {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Pourquoi choisir mes services ?</h2>
+            <h2 className="text-3xl font-bold text-primary">Pourquoi choisir mes services ?</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Découvrez les avantages de faire appel à un intervenant qualifié et expérimenté.
             </p>
@@ -134,7 +133,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-gray-900">Mon Expérience et Mes Valeurs</h2>
+              <h2 className="text-3xl font-bold text-primary">Mon Expérience et Mes Valeurs</h2>
               <p className="text-lg text-gray-600 leading-relaxed">
                 Forte de plusieurs années d'expérience en tant qu'aide-soignante D.E., j'ai à cœur
                 de créer un lien de confiance durable avec chaque bénéficiaire.

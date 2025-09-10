@@ -126,7 +126,7 @@ const Avis = () => {
       {/* Trust Section */}
       <section className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl font-bold text-primary mb-4">
             Rejoignez mes clients satisfaits
           </h2>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
@@ -135,10 +135,10 @@ const Avis = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg">
-              <Link to="/contact">Nous contacter</Link>
+              <Link to="/contact">Me contacter</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link to="/prestations">Découvrir nos services</Link>
+              <Link to="/prestations">Découvrir mes services</Link>
             </Button>
           </div>
         </div>

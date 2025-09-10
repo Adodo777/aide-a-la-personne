@@ -153,7 +153,7 @@ const Tarifs = () => {
       <section className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Modes de Paiement</h2>
+            <h2 className="text-3xl font-bold text-primary">Modes de Paiement</h2>
             <p className="text-xl text-gray-600">
               J'accepte plusieurs modes de paiement pour votre convenance
             </p>
@@ -182,7 +182,7 @@ const Tarifs = () => {
       {/* CTA Section */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-primary/5 rounded-2xl p-8 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl font-bold text-primary mb-4">
             Besoin d'un devis personnalisé ?
           </h2>
           <p className="text-lg text-gray-600 mb-6">

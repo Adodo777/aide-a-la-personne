@@ -20,7 +20,7 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900">Contact</h3>
+            <h3 className="text-lg font-semibold text-primary">Contact</h3>
             <div className="space-y-2">
               <div className="flex items-center space-x-2 text-gray-600">
                 <Phone className="h-4 w-4" />
@@ -39,7 +39,7 @@ const Footer = () => {
 
           {/* Informations légales */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900">Informations</h3>
+            <h3 className="text-lg font-semibold text-primary">Informations</h3>
             <div className="space-y-2 text-base text-gray-600">
               <p>Aide-soignante diplômée d'État</p>
               <p>Services agréés</p>

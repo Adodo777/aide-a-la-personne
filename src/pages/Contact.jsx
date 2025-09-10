@@ -14,6 +14,8 @@ import {
   User,
   MessageCircle
 } from 'lucide-react';
+import { set } from 'date-fns';
+
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -39,17 +41,31 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch('https://script.google.com/macros/s/AKfycbxlkG_nUD9d75UpmtqH3y2IGwZTlUe4bSxLzZztsyADze-YZkidI8Q94sslS3wN9l33/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbxlkG_nUD9d75UpmtqH3y2IGwZTlUe4bSxLzZztsyADze-YZkidI8Q94sslS3wN9l33/exec', {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: {
-          'Content-Type': 'text/plain'
+          'Content-Type': 'text/plain;charset=utf-8'
         }
       });
-      setIsSubmitted(true);
-      setTimeout(() => setIsSubmitted(false), 5000);
+      let result = {};
+      try {
+        result = await response.json();
+      } catch (err) {
+        // si cors bloque la réponse, on ignore l'erreur
+      }
+
+      if (result.status === "OK"){
+        setIsSubmitted(true);
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        // meme si on ne peut pas lire la réponse, on suppose que c'est ok
+        setIsSubmitted(true);
+        setTimeout(() => setIsSubmitted(false), 5000);
+      }
     } catch (err) {
-      alert("Erreur lors de l'envoi du formulaire.");
+      console.error("Erreur réseau:", err);
+      alert("Erreur réseau. Veuillez réessayer plus tard.");
     }
   };
 
@@ -148,9 +164,9 @@ const Contact = () => {
                 {isSubmitted ? (
                   <div className="text-center py-8 space-y-4">
                     <CheckCircle className="h-16 w-16 text-green-500 mx-auto" />
-                    <h3 className="text-xl font-semibold text-gray-900">Message envoyé !</h3>
+                    <h3 className="text-xl font-semibold text-primary">Message envoyé !</h3>
                     <p className="text-gray-600">
-                      Nous avons bien reçu votre demande et vous recontacterons très prochainement.
+                      Nathalie a bien reçu votre demande et vous recontactera très prochainement. Merci !
                     </p>
                   </div>
                 ) : (

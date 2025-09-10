@@ -69,7 +69,7 @@ const Liens = () => {
       {/* Header Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-gray-900">Liens Utiles</h1>
+          <h1 className="text-4xl font-bold text-primary">Liens Utiles</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Pour vous accompagner dans vos démarches et vous informer sur les aides disponibles, 
             voici une liste de liens utiles vers des organismes et institutions clés.
@@ -98,7 +98,7 @@ const Liens = () => {
       {/* Financial Aids Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4 mb-12">
-          <h2 className="text-3xl font-bold text-gray-900">Aides et Financements</h2>
+          <h2 className="text-3xl font-bold text-primary">Aides et Financements</h2>
           <p className="text-xl text-gray-600">
             Les principales aides financières pour l'accompagnement à domicile
           </p>
@@ -150,7 +150,7 @@ const Liens = () => {
       <section className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Informations et Conseils</h2>
+            <h2 className="text-3xl font-bold text-primary">Informations et Conseils</h2>
             <p className="text-xl text-gray-600">
               Ressources officielles pour vous guider dans vos démarches
             </p>
@@ -207,7 +207,7 @@ const Liens = () => {
         <Card className="border-primary/20 bg-primary/5">
           <CardContent className="p-8 text-center space-y-4">
             <FileText className="h-12 w-12 text-primary mx-auto" />
-            <h3 className="text-2xl font-bold text-gray-900">Besoin d'aide pour vos démarches ?</h3>
+            <h3 className="text-2xl font-bold text-primary">Besoin d'aide pour vos démarches ?</h3>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Je peux vous accompagner dans vos démarches administratives et vous aider 
               à identifier les aides auxquelles vous avez droit.
