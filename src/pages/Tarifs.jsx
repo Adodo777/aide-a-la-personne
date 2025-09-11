@@ -199,14 +199,14 @@ const Tarifs = () => {
             Besoin d'un devis personnalisé ?
           </h2>
           <p className="text-lg text-gray-600 mb-6">
-            Contactez-nous pour une évaluation gratuite de vos besoins et un devis détaillé.
+            Contactez-moi pour une évaluation gratuite de vos besoins et un devis détaillé.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="transition-transform duration-300 hover:scale-105">
               <Link to="/contact">Demander un devis</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="transition-transform duration-300 hover:scale-105">
-              <Link to="/prestations">Voir nos services</Link>
+              <Link to="/prestations">Voir mes services</Link>
             </Button>
           </div>
         </div>
