@@ -14,6 +14,7 @@ const Header = () => {
     { name: 'Tarifs', href: '/tarifs' },
     { name: 'Avis clients', href: '/avis' },
     { name: 'Liens utiles', href: '/liens' },
+    { name: 'Équipe', href: '/equipe' },
     { name: 'Contact', href: '/contact' },
   ];
 
