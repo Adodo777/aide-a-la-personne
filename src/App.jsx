@@ -8,6 +8,7 @@ import Avis from './pages/Avis';
 import Liens from './pages/Liens';
 import Contact from './pages/Contact';
 import Equipe from './pages/Equipe';
+import TeamMemberDetail from './pages/TeamMemberDetail';
 import './App.css';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/liens" element={<Liens />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/equipe" element={<Equipe />} />
+            <Route path="/equipe/:id" element={<TeamMemberDetail />} />
           </Routes>
         </main>
         <Footer />

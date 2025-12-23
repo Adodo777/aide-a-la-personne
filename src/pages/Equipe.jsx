@@ -37,7 +37,7 @@ const Equipe = () => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in-up">
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold text-primary">Notre Équipe</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Une équipe de professionnels qualifiés et bienveillants, dédiée à votre accompagnement quotidien
           </p>
         </div>

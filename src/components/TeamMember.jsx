@@ -1,12 +1,13 @@
+import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Phone, Mail, Linkedin, Twitter, Instagram, User } from 'lucide-react';
-
 
 /**
  * Composant réutilisable pour afficher un membre de l'équipe
  * Toutes les données sont passées via props
  */
 const TeamMember = ({
+  id,
   photo,
   name,
   role,
@@ -17,16 +18,17 @@ const TeamMember = ({
 }) => {
   return (
     <article className="group">
-      <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-border">
+      <Link to={`/equipe/${id}`} className="block">
+        <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-border">
         <CardContent className="p-0">
           {/* Photo du membre */}
           <figure className="relative overflow-hidden aspect-square bg-muted">
-            {photo && photo !== "/placeholder.svg" ? (
+            {photo && photo !== "" ? (
               <img
                 src={photo}
                 alt={`Photo de ${name}`}
                 loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 "
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center bg-secondary">
@@ -113,6 +115,7 @@ const TeamMember = ({
           </div>
         </CardContent>
       </Card>
+      </Link>
     </article>
   );
 };
