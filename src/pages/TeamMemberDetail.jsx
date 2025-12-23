@@ -1,5 +1,6 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowLeft, Phone, Mail, Linkedin, Twitter, Instagram, User } from 'lucide-react';
@@ -11,6 +12,14 @@ import { teamMembers } from '@/data/teamMembers';
 const TeamMemberDetail = () => {
   const { id } = useParams();
   const member = teamMembers.find((m) => m.id === id);
+
+  // Scroll to top when member changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [id]);
+
+  // Filtrer les autres membres (exclure le membre actuel)
+  const otherMembers = teamMembers.filter((m) => m.id !== id);
 
   if (!member) {
     return <Navigate to="/equipe" replace />;
@@ -152,6 +161,93 @@ const TeamMemberDetail = () => {
             </div>
           </CardContent>
         </Card>
+      </section>
+
+      {/* Section Autres membres de l'équipe */}
+      {otherMembers.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+          <div className="space-y-8">
+            {/* En-tête de section */}
+            <div className="text-center space-y-2">
+              <h2 className="text-3xl font-bold text-primary">Autres membres de l'équipe</h2>
+              <p className="text-gray-600 text-lg">
+                Découvrez les autres professionnels qui composent notre équipe
+              </p>
+            </div>
+
+            {/* Grille des autres membres */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {otherMembers.map((otherMember, index) => (
+                <Link
+                  key={otherMember.id}
+                  to={`/equipe/${otherMember.id}`}
+                  className="group block animate-fade-in-up"
+                  style={{ animationDelay: `${0.4 + index * 0.1}s` }}
+                >
+                  <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-lg border-border">
+                    <CardContent className="p-0">
+                      {/* Photo miniature */}
+                      <figure className="relative overflow-hidden aspect-square bg-muted">
+                        {otherMember.photo && otherMember.photo !== "" ? (
+                          <img
+                            src={otherMember.photo}
+                            alt={`Photo de ${otherMember.name}`}
+                            loading="lazy"
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-secondary">
+                            <User className="h-16 w-16 text-muted-foreground" aria-hidden="true" />
+                          </div>
+                        )}
+                      </figure>
+
+                      {/* Informations compactes */}
+                      <div className="p-4 space-y-2">
+                        <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                          {otherMember.name}
+                        </h3>
+                        <p className="text-sm text-gray-600 font-medium line-clamp-1">
+                          {otherMember.role}
+                        </p>
+                        <p className="text-sm text-gray-600 line-clamp-2">
+                          {otherMember.bio}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+
+            {/* Lien vers la page équipe complète */}
+            <div className="text-center pt-6">
+              <Button asChild variant="outline" size="lg" className="transition-transform duration-300 hover:scale-105">
+                <Link to="/equipe">Voir toute l'équipe</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* CTA Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+        <div className="bg-primary/5 rounded-2xl p-8 md:p-12 text-center space-y-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-primary">
+            Besoin d'un accompagnement personnalisé ?
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Notre équipe est à votre disposition pour répondre à vos questions et vous proposer des solutions adaptées à vos besoins.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild size="lg">
+              <Link to="/contact">Nous contacter</Link>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <Link to="/prestations">Voir nos prestations</Link>
+            </Button>
+          </div>
+        </div>
       </section>
     </div>
   );
